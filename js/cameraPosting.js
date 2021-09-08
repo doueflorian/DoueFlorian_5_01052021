@@ -86,18 +86,21 @@ displayProduct().then(camera => {
             let addQuantityToProduct = productAlreadyInCart.find( el => el.id == productToCart.id);
             addQuantityToProduct.quantity += 1;
             localStorage.setItem("products", JSON.stringify(productAlreadyInCart));
-
+            //  mettre icone panier à jour
+            displayCart();
         }else if (productAlreadyInCart && alreadyThere == false){                   
             // Si produit déjà présent, augmenter sa valeur de + 1, renvoi du panier dans le localStorage
             productAlreadyInCart.push(productToCart);
             localStorage.setItem("products", JSON.stringify(productAlreadyInCart));
-
+            //  mettre icone panier à jour
+            displayCart();
         }else{     
             // Si panier vide, redéclaration d'un tableau vide et ajout du produit.
              productAlreadyInCart = [];
              productAlreadyInCart.push(productToCart)
              localStorage.setItem("products", JSON.stringify(productAlreadyInCart));
-
+            //  mettre icone panier à jour
+             displayCart();
         }       
 
     });
