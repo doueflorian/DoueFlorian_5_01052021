@@ -11990,5 +11990,13 @@ a.disabled {
 }
 
 .ori-bg {
-  background: repeat-x url("../images/ori-bg-fade.png");
+  background: repeat-x url("https://doueflorian.github.io/projet5test/images/images/ori-bg-fade.png");
+}
+
+body {
+  min-height: 100vh;
+}
+
+.replace_carousel {
+  height: 10vh;
 }
