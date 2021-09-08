@@ -33,5 +33,73 @@ return new Promise((resolve) => {
 })
 }
 
-// ----- Appel de la fonction d'affichage du produit
-displayProduct()
+// ----- Appel de la fonction d'affichage du produit et code utile au localStorage
+displayProduct().then(camera => {
+
+    // Récupération du choix d'option produit
+    let chosenOption = document.querySelector('#option_produit');
+
+    // Récupération du clic d'ajout au panier
+    document.getElementById('addToCart').addEventListener('click', (e) => {
+       e.preventDefault();
+        // envoi sur la pager panier au clic
+        // if (window.confirm("Souhaitez vous être redirigé vers le panier ?")) {
+        //     document.location.href = "/panier.html" 
+        // }
+        
+       
+        // Déclaration de l'objet à remplir avant envoi au panier
+        let productToCart = {
+            id : camera._id,
+            name : camera.name,
+            // Récupération de la valeur du choix du produit
+            option : chosenOption.value,
+            price : camera.price,
+            quantity : 1,
+            fullPrice : "",     
+        }
+
+        // Création d'une variable qui variable pour stocker true ou false
+        // sur la présence ou non du produit dans le panier 
+        let alreadyThere;
+
+            // Déclaration d'un tableau qui reçoit tous les IDs de produits présents dans le panier
+            let inCartIDs = [];
+            // Push des IDs présent dans le tableau inCartIDs
+            if(productAlreadyInCart) {
+                productAlreadyInCart.forEach(p => inCartIDs.push(p.id));
+            }
+
+            // Boucle qui renvoie true si l'ID est déjà présent dans le panier
+            // Recherche de l'ID
+                if(inCartIDs.includes(productToCart.id)){
+                    // Renvoi que le produit est déjà dans le panier
+                    alreadyThere = true;
+                }else{
+                    // Renvoi que le produit n'est pas dans le panier
+                    alreadyThere = false;
+                }
+        
+
+        if(productAlreadyInCart && alreadyThere){ 
+            // Si produit déjà présent, augmenter sa valeur de + 1, renvoi du panier dans le localStorage
+            let addQuantityToProduct = productAlreadyInCart.find( el => el.id == productToCart.id);
+            addQuantityToProduct.quantity += 1;
+            localStorage.setItem("products", JSON.stringify(productAlreadyInCart));
+
+        }else if (productAlreadyInCart && alreadyThere == false){                   
+            // Si produit déjà présent, augmenter sa valeur de + 1, renvoi du panier dans le localStorage
+            productAlreadyInCart.push(productToCart);
+            localStorage.setItem("products", JSON.stringify(productAlreadyInCart));
+
+        }else{     
+            // Si panier vide, redéclaration d'un tableau vide et ajout du produit.
+             productAlreadyInCart = [];
+             productAlreadyInCart.push(productToCart)
+             localStorage.setItem("products", JSON.stringify(productAlreadyInCart));
+
+        }       
+
+    });
+
+});

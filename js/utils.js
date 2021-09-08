@@ -19,3 +19,16 @@ function convertPrice(productPrice){
 const getUrlID = new URLSearchParams(window.location.search);
 const id = getUrlID.get('id');
 
+// -- Déclart l'array pour accueillir les informations à envoyer dans localStorage
+let productAlreadyInCart = [];
+productAlreadyInCart = JSON.parse(localStorage.getItem('products'));
+
+
+// Afficher icone de panier "checked" ainsi que le nombre de produits
+function displayCart(){
+    if(productAlreadyInCart) {
+        document.getElementById("logo_cart").innerHTML = `<img src="https://doueflorian.github.io/projet5test/images/ori-cart-check.png" width="25" height="25" alt="image de panier" aria-hidden="true"/>`
+                       + `<span class="mx-1">${productAlreadyInCart.length}</span>`;
+    };
+}
+displayCart()
