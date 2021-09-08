@@ -14,3 +14,8 @@ function convertPrice(productPrice){
     productPrice = new Intl.NumberFormat('fr-FR', { style: 'currency', currency: 'EUR', } ).format(productPrice / 100 );
     return productPrice;
 }
+
+// -- Extraction de l'id contenu dans l'URL
+const getUrlID = new URLSearchParams(window.location.search);
+const id = getUrlID.get('id');
+

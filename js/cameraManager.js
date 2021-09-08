@@ -20,7 +20,7 @@ fetch(cameraAPI)
                 <span>${convertPrice(camera.price)}</span>
                 <p class="product-description text-truncate">${camera.description}</p>
 
-                <a class="stretched-link" href="#}">Voir cet article</a>
+                <a class="stretched-link" href="camera_product.html?id=${camera._id}">Voir cet article</a>
                 </div>
             </div>
         </div>`
@@ -28,6 +28,6 @@ fetch(cameraAPI)
     })
 // Renvoi d'une alerte en cas de non accès à l'API
     .catch((error) => {
-        console.log(error, "Couldn't sfind products");
+        console.log(error, "Couldn't find products");
         alert("Couldn't find products");
     });
