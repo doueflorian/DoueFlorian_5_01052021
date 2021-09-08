@@ -1,0 +1,19 @@
+{
+  "name": "orinoco-backend",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@popperjs/core": "^2.9.3",
+    "bootstrap": "^5.1.0",
+    "express": "^4.16.4",
+    "json-server": "^0.16.3",
+    "node-fetch": "^2.6.1",
+    "uuid": "^3.3.2"
+  }
+}
