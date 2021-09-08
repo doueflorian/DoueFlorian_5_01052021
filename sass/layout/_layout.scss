@@ -1,0 +1,27 @@
+a.disabled {
+    color: #adb5bd;
+    pointer-events: none;
+}
+
+.carousel-control-next,
+.carousel-control-prev /*, .carousel-indicators */ {
+    filter: invert(100%);
+    width: 5%;
+}
+
+.card {
+    height: 100%;
+    background-color: $secondary;
+    border: none;
+}
+
+.card-img-top {
+    width: 90%;
+    height: 60%;
+    object-fit: cover;
+    margin: 1em auto 0;  
+}
+
+.ori-bg{
+    background: repeat-x url("../images/ori-bg-fade.png");
+}
