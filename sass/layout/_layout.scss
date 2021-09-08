@@ -33,3 +33,20 @@ body {
 .replace_carousel {
     height : 10vh;
 }
+
+#cameraPrice {
+    font-size: 1.4rem;
+}
+
+.btn-add-cart:active {
+    transform: scale(0.95);
+    transition: 200ms ease-in-out;
+}
+
+.btn-delete {
+    background-color: transparent;
+    border: 1px solid black;
+    padding: 0rem 0.3rem;
+    font-size: 1rem;
+    border-radius: 0.25rem;
+}
