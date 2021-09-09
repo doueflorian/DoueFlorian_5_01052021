@@ -8,11 +8,11 @@ if(productAlreadyInCart === null) {
 }else{
 // ------ Début de la condition qui affiche le panier 
   // Lien pour vider le panier
-  document.getElementById('clearCart').addEventListener('click', function() {
+  document.querySelectorAll('[data-id=clearCart').forEach(clear => clear.addEventListener('click', function() {
     localStorage.removeItem("products");
       // Recharger la page pour mettre à jour l'affichage du panier
     document.location.reload();
-  });
+  }));
   
 
   // ----- Début de la boucle prévue à l'affichage des produits du panier
@@ -24,7 +24,7 @@ if(productAlreadyInCart === null) {
       // Création du contenu HTML affichant les éléments du panier qui s'incrémente par produit présent dans le tableau
       document.getElementById('cartProducts').innerHTML +=
               `<tr>
-                  <td><a href="../products/camera_product.html?id=${cartProduct.id}">${cartProduct.name}</a></td>
+                  <td><a href="/../../products/camera_product.html?id=${cartProduct.id}">${cartProduct.name}</a></td>
                   <td>
                       <select data-id="${cartProduct.id}" class="form-select quantity">
                       <option value="1">1</option>
@@ -40,7 +40,7 @@ if(productAlreadyInCart === null) {
                       </select>
                   </td>
                   <td class="productPrice">${convertPrice(cartProduct.price)}</td>
-                  <td class="d-none d-md-table-cell" id="${cartProduct.id}" class="productTotalPrice">${convertPrice(cartProduct.fullPrice)}</td>
+                  <td class="d-none d-md-table-cell" data-id="${cartProduct.id}" class="productTotalPrice">${convertPrice(cartProduct.fullPrice)}</td>
                   <td class="d-none d-md-table-cell"><button data-id="${cartProduct.id}" class="btn-delete">X</button></td>
               </tr>
               <tr class="d-md-none border-dark">
@@ -50,7 +50,7 @@ if(productAlreadyInCart === null) {
                 <td>
                 <span class="fw-bold text-end">Total : </span>
                 </td>
-                <td id="${cartProduct.id}" class="productTotalPrice">
+                <td class="d-md-none border-dark" data-id="${cartProduct.id}" class="productTotalPrice">
                 ${convertPrice(cartProduct.fullPrice)}
                 </td>
               </tr>`
@@ -83,9 +83,10 @@ if(productAlreadyInCart === null) {
            // renvoi du tableau modifié dans le local storage
           localStorage.setItem("products", JSON.stringify(productAlreadyInCart)); 
             // récupération de l'élément HTML correspondant au prix total du produit par son ID contenant l'ID du produit
-          let textToUpdate = document.getElementById(quantityToUpdate);
+          let textToUpdate = document.querySelectorAll(`td[data-id="${quantityToUpdate}"]`);
+          console.log(textToUpdate)
             // affichage du prix mis à jour pour le client
-          textToUpdate.innerText = `${convertPrice(updatedProduct.fullPrice)}`;
+          textToUpdate.forEach(ttu => ttu.innerText = `${convertPrice(updatedProduct.fullPrice)}`);
         }));
       
 

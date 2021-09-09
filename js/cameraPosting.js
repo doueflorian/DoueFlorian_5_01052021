@@ -43,9 +43,9 @@ displayProduct().then(camera => {
     document.getElementById('addToCart').addEventListener('click', (e) => {
        e.preventDefault();
         // envoi sur la pager panier au clic
-        // if (window.confirm("Souhaitez vous être redirigé vers le panier ?")) {
-        //     document.location.href = "/panier.html" 
-        // }
+        if (window.confirm("Produit ajouté au panier \n Souhaitez vous être redirigé vers le panier ?")) {
+            document.location.href = "/panier.html" 
+        }
         
        
         // Déclaration de l'objet à remplir avant envoi au panier
