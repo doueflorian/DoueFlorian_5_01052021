@@ -24,7 +24,7 @@ if(productAlreadyInCart === null) {
       // Création du contenu HTML affichant les éléments du panier qui s'incrémente par produit présent dans le tableau
       document.getElementById('cartProducts').innerHTML +=
               `<tr>
-                  <td><a href="/../../products/camera_product.html?id=${cartProduct.id}">${cartProduct.name}</a></td>
+                  <td><a href="https://doueflorian.github.io/DoueFlorian_5_01052021/products/camera_product.html?id=${cartProduct.id}">${cartProduct.name}</a></td>
                   <td>
                       <select data-id="${cartProduct.id}" class="form-select quantity">
                       <option value="1">1</option>
