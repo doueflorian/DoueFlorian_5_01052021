@@ -5,7 +5,7 @@ function displayProduct() {
 return new Promise((resolve) => {
 
 // Récupération des informations du produit correspondant à l'ID depuis l'API
-    fetch(`http://localhost:3000/api/cameras/${id}`)
+    fetch(`cameraAPI/${id}`)
     .then( function(response) {
         return response.json() })
 // Intégration des informations principales du produit dans le code HTML statique
