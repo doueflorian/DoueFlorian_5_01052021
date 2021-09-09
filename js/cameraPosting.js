@@ -1,11 +1,13 @@
 // ----- Récupération des données relatives à l'ID envoyé dans l'URL
 
+
+
 // Création d'une fonction qui renvoie une promesse afin de l'utiliser ultérieurement
 function displayProduct() {
 return new Promise((resolve) => {
 
 // Récupération des informations du produit correspondant à l'ID depuis l'API
-    fetch(`cameraAPI/${id}`)
+    fetch(cameraAPI + `${id}`)
     .then( function(response) {
         return response.json() })
 // Intégration des informations principales du produit dans le code HTML statique
