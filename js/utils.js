@@ -1,5 +1,5 @@
 // -- Déclarer les adresses des APIs
-const cameraAPI = ('http://localhost:3000/api/cameras')
+const cameraAPI = ('https://orinocoapidfocr.herokuapp.com/api/cameras')
 
 // -- Déclarer la classe Camera
 class Camera {
