@@ -44,7 +44,7 @@ displayProduct().then(camera => {
        e.preventDefault();
         // envoi sur la pager panier au clic
         if (window.confirm("Produit ajouté au panier \n Souhaitez vous être redirigé vers le panier ?")) {
-            document.location.href = "/panier.html" 
+            document.location.href = "../panier.html" 
         }
         
        
