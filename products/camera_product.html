@@ -25,49 +25,52 @@
 
   <body class="d-flex flex-column">
     
-<div class="container-fluid">    
-    <div class="row ">
-        <div class="col bg-secondary ">
-            <nav class="navbar navbar-expand-lg navbar-light px-4">
-
-                    <a class="navbar-brand" href="../index.html">
-                        <img src="../images/logo.png" width="150" height="41" alt="logo orinoco" />
-                    </a>
-
-                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                        <span class="navbar-toggler-icon"></span>
-                    </button>
-                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                            <li class="nav-item">
-                               <a class="nav-link" aria-current="page" href="../index.html">Accueil</a>
-                            </li>
-                            <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                Produits
+    <div class="container-fluid">    
+        <div class="row ">
+            <div class="col bg-secondary ">
+                <nav class="navbar navbar-expand-lg navbar-light px-4">
+    
+                        <a class="navbar-brand" href="../index.html">
+                            <img src="../images/logo.png" width="150" height="41" alt="logo orinoco" />
+                        </a>
+    
+                        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                            <span class="navbar-toggler-icon"></span>
+                            <span class="logo_cart d-inline d-lg-none">
+                                <img src="images/ori-cart.png" width="25" height="25" alt="image de panier" aria-hidden="true"/>
+                            </span>
+                            
+                        </button>
+                        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                                <li class="nav-item">
+                                   <a class="nav-link active" aria-current="page" href="../index.html">Accueil</a>
+                                </li>
+                                <li class="nav-item dropdown">
+                                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                    Produits
+                                    </a>
+                                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                    <li><a class="dropdown-item" href="../products/cameras.html">OriCameras</a></li>
+                                    <li><a class="dropdown-item disabled" href="#">OriFurnitures</a></li>
+                                    <li><a class="dropdown-item disabled" href="#">OriBears</a></li>
+                                    </ul>
+                                </li>
+    
+                            </ul>  
+     
+                                <a class="nav-item" href="../panier.html" tabindex="-1" >
+                                    <span class="logo_cart d-none d-lg-inline">
+                                        <img src="../images/ori-cart.png" width="25" height="25" alt="image de panier" aria-hidden="true"/>
+                                    </span>
+                                    Panier
                                 </a>
-                                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <li><a class="dropdown-item" href="../products/cameras.html">OriCameras</a></li>
-                                <li><a class="dropdown-item  disabled" href="#">OriFurnitures</a></li>
-                                <li><a class="dropdown-item disabled" href="#">OriBears</a></li>
-                                </ul>
-                            </li>
 
-                        </ul>                              
-                                  
-                        <span class="nav-item">
-                            <a class="nav-link text-center" href="../panier.html" tabindex="-1" >
-                                <span id="logo_cart">
-                                    <img src="../images/ori-cart.png" width="25" height="25" alt="image de panier" aria-hidden="true"/>
-                                </span>
-                                Panier
-                            </a>
-                        </span>
-                    </div>
-            </nav>
+                        </div>
+                </nav>
+            </div>
         </div>
     </div>
-</div>
 
 <div class="row d-none d-md-block ori-bg pb-4 replace_carousel">
 </div>
@@ -76,20 +79,20 @@
     <div class="card m-3">
         <div class="row g-0">
             <div class="col-lg-4">
-                <img src="..." class="img-fluid rounded-start p-4" id="cameraImg" alt="photo d'appareil photo">
+                <img src="..." class="img-fluid rounded-start p-4" id="camera_img" alt="photo d'appareil photo">
             </div>
             <div class="col d-flex">
                 <div class="card-body d-flex flex-column m-3">
-                    <h5 class="card-title h3 mb-3" id="cameraName">Camera Name</h5>
+                    <h5 class="card-title h3 mb-3" id="camera_name">Camera Name</h5>
 
-                    <p class="card-text flex-grow-1" id="cameraDescription"></p>
+                    <p class="card-text flex-grow-1" id="camera_description"></p>
 
                     <form>
                         <label for="option_produit">Choisir votre objectif :</label>
                         <select class="w-auto" id="option_produit">
                         </select>
                     </form>
-                    <p class="card-text mt-3 align-self-end" id="cameraPrice"></p>
+                    <p class="card-text mt-3 align-self-end" id="camera_price"></p>
                     <button class="btn btn-primary btn-add-cart d-block m-3" id="addToCart">Ajouter au panier</button>
                 </div>
             </div>

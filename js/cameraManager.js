@@ -14,7 +14,7 @@ fetch(cameraAPI)
             document.getElementById('productsListCamera').innerHTML += `
             <div class="col-12 col-md-6 col-lg-3 g-2">
             <div class="card">
-                <img src="${camera.imageUrl}" class="card-img-top" alt="image d'appareil photo" id="cameraImg">
+                <img src="${camera.imageUrl}" class="card-img-top" alt="appareil photo ${camera.name}">
                 <div class="card-body d-flex flex-wrap justify-content-between">
                 <h5 class="card-title">${camera.name}</h5>
                 <span>${convertPrice(camera.price)}</span>

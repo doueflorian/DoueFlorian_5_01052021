@@ -11,10 +11,10 @@ return new Promise((resolve) => {
 // Intégration des informations principales du produit dans le code HTML statique
     .then( function(dataCamera) {
             camera = new Camera(dataCamera)
-            document.getElementById('cameraImg').src = camera.imageUrl;
-            document.getElementById('cameraName').innerText = camera.name;
-            document.getElementById('cameraDescription').innerText = camera.description;
-            document.getElementById('cameraPrice').innerText = convertPrice(camera.price); 
+            document.getElementById('camera_img').src = camera.imageUrl;
+            document.getElementById('camera_name').innerText = camera.name;
+            document.getElementById('camera_description').innerText = camera.description;
+            document.getElementById('camera_price').innerText = convertPrice(camera.price); 
 
             resolve(dataCamera);
     })

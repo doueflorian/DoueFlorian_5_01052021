@@ -22,7 +22,6 @@
   </head>
 
   <body class="d-flex flex-column">
-    
     <div class="container-fluid">    
         <div class="row ">
             <div class="col bg-secondary ">
@@ -34,6 +33,10 @@
     
                         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                             <span class="navbar-toggler-icon"></span>
+                            <span class="logo_cart d-inline d-lg-none">
+                                <img src="images/ori-cart.png" width="25" height="25" alt="image de panier" aria-hidden="true"/>
+                            </span>
+                            
                         </button>
                         <div class="collapse navbar-collapse" id="navbarSupportedContent">
                             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
@@ -46,21 +49,20 @@
                                     </a>
                                     <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                                     <li><a class="dropdown-item" href="products/cameras.html">OriCameras</a></li>
-                                    <li><a class="dropdown-item  disabled" href="#">OriFurnitures</a></li>
+                                    <li><a class="dropdown-item disabled" href="#">OriFurnitures</a></li>
                                     <li><a class="dropdown-item disabled" href="#">OriBears</a></li>
                                     </ul>
                                 </li>
     
-                            </ul>                                   
-                                      
-                             <span class="nav-item">
-                                <a class="nav-link text-center" href="panier.html" tabindex="-1" >
-                                    <span id="logo_cart">
+                            </ul>  
+     
+                                <a class="nav-item" href="panier.html" tabindex="-1" >
+                                    <span class="logo_cart d-none d-lg-inline">
                                         <img src="images/ori-cart.png" width="25" height="25" alt="image de panier" aria-hidden="true"/>
                                     </span>
                                     Panier
                                 </a>
-                            </span>
+
                         </div>
                 </nav>
             </div>

@@ -35,6 +35,10 @@
     
                         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                             <span class="navbar-toggler-icon"></span>
+                            <span class="logo_cart d-inline d-lg-none">
+                                <img src="images/ori-cart.png" width="25" height="25" alt="image de panier" aria-hidden="true"/>
+                            </span>
+                            
                         </button>
                         <div class="collapse navbar-collapse" id="navbarSupportedContent">
                             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
@@ -54,14 +58,13 @@
     
                             </ul>  
      
-                             <span class="nav-item">
-                                <a class="nav-link text-center" href="panier.html" tabindex="-1" >
-                                    <span id="logo_cart">
+                                <a class="nav-item" href="panier.html" tabindex="-1" >
+                                    <span class="logo_cart d-none d-lg-inline">
                                         <img src="images/ori-cart.png" width="25" height="25" alt="image de panier" aria-hidden="true"/>
                                     </span>
                                     Panier
                                 </a>
-                            </span>
+
                         </div>
                 </nav>
             </div>
@@ -80,8 +83,8 @@
                             <th scope="col">Produit</th>
                             <th scope="col">Quantité</th>
                             <th scope="col">Prix</th>
-                            <th scope="col">Total</th>
-                            <th scope="col">supprimer</th>
+                            <th scope="col" class="d-none d-md-table-cell">Total</th>
+                            <th scope="col" class="d-none d-md-table-cell">supprimer</th>
                         </tr>
                     </thead>
                     <tbody id="cartProducts">
@@ -89,12 +92,12 @@
                     </tbody>
                     <tfoot id="tfoot">
                         <tr>
-                            <th colspan="2"></th>
-                            <th scope="col">Montant total</th>
-                            <th scope="col" id="cart_total_price"></th>
-                            <th scope="col">
+                            <td colspan=""></td>
+                            <td class="fw-bold">Montant total du panier</td>
+                            <td class="fw-bold" id="cart_total_price"></td>
+                            <td class="fw-italic d-none d-md-block">
                                 <a href="#"  id="clearCart">vider le panier</a>
-                            </th>
+                            </td>
                         </tr>
 
                     </tfoot>
