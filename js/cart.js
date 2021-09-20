@@ -158,10 +158,8 @@ let form = document.querySelector("#command_form");
 //    Ecoute des changements des inputs
 form.lname.addEventListener("change", function(){validLname(this)});
 form.fname.addEventListener("change", function(){validFname(this)});
-form.zipcode.addEventListener("change", function(){validZipcode(this)});
 form.city.addEventListener("change", function(){validCity(this)});
 form.email.addEventListener("change", function(){validEmail(this)});
-form.password.addEventListener("change", function(){validPassword(this)});
 
 
 // Fonction de validation des différents élements grace aux expressions régulières
@@ -200,25 +198,6 @@ if(!/[0-9]/.test(inputFname.value)){
   small.classList.remove("text-success");
   small.classList.add("text-danger");
   inputFname.classList.add("is-invalid")
-  return false;
-}
-}
-
-  // Code postal
-const validZipcode = function(inputZipcode) {
-
-let zipcodeRegExp = new RegExp("^[0-9]{5}(-\s[0-9]{4})?$", "g");
-let small = inputZipcode.nextElementSibling;
-      
-if(zipcodeRegExp.test(inputZipcode.value)){
-  small.innerText ="";
-  small.classList.remove("text-danger");
-  inputZipcode.classList.remove("is-invalid")
-  return true;
-}else{
-  small.innerText ="Votre code postal n'est pas valide"
-  small.classList.add("text-danger");
-  inputZipcode.classList.add("is-invalid")
   return false;
 }
 }
@@ -264,49 +243,6 @@ if(emailRegExp.test(inputEmail.value)){
 }
 }
 
-  // Mot de passe
-const validPassword = function(inputPassword) {
-    let msg;
-    let valid = false;
-
-    // le mot de passe doit contenir
-    if(inputPassword.value.length < 8) { // au moins huit caractères
-      msg = "le mot de passe doit contenir au moins huit caractères";
-    }else if(!/[A-Z]/.test(inputPassword.value)) { // une majuscule
-      msg = "le mot de passe doit contenir au moins une majuscule";
-    }else if(!/[a-z]/.test(inputPassword.value)) { // une minuscule
-      msg = "le mot de passe doit contenir au moins une minuscule";
-    }else if(!/[0-9]/.test(inputPassword.value)) { // un chiffre
-      msg = "le mot de passe doit contenir au moins un chiffre";
-    }else{ // mot de passe valide
-      msg = "le mot de passe est valide";
-      valid = true;
-    }
-    
-
-    let small = inputPassword.nextElementSibling;
-
-    if(valid){
-      small.classList.remove("text-danger")
-      small.classList.add("text-success")
-      small.innerText = msg;
-      inputPassword.classList.remove("is-invalid")
-      return true;
-    }else{
-      small.classList.add("text-danger")
-      small.classList.remove("text-success")
-      small.innerText = msg;
-      inputPassword.classList.add("is-invalid")
-      return false;
-    }
-
-}
-
-
-// Récupération de la case à cocher pour les CGV
-let formCheck = document.querySelector("#form_check");
-
-
 // Vérification du formulaire.
 
 let formIsValid = false;
@@ -315,20 +251,14 @@ let formIsValid = false;
 function validateForm() {
   if(    validLname(form.lname) 
     && validFname(form.fname) 
-    && validZipcode(form.zipcode) 
     && validCity(form.city)
     && validEmail(form.email)
-   && validPassword(form.password)
   ) {
     formIsValid = true;     
-    console.log("hee hee")
   }else{
     formIsValid = false;
-    console.log("ho no")
-
   }
 };
-
 
 
 // Récupération du clic sur "procéder au paiement"
@@ -344,27 +274,66 @@ form.addEventListener('submit', function(e) {
         document.location.href = "index.html"
       }
     // Si le formulaire n'est pas valide
-    }else if(formIsValid == false){
+    }else if(productAlreadyInCart && formIsValid == false){
       e.preventDefault();
       alert("Vous devez remplir les informations de facturation")
       
     // Si formulaire et check des CGV sont ok et que le panier est rempli  
-    }else if (formIsValid && formCheck.checked && productAlreadyInCart) {
-      if (window.confirm("Votre commande a bien été prise en compte. \n Cliquez sur ok pour retourner à l'accueil")){
-        document.location.href = "index.html"}
-      // Vider le localstorage et le formulaire, recharger la page pour imiter un envoi de formulaire
-      localStorage.clear();
-      form.reset();
-      document.location.reload();
-        
-    // form.submit(); non utilisé mais présent en prévision de la mise en route du site.
-
-    // Message au client si tout ok mais CGV non cochées
     }else{
-      e.preventDefault();
-      alert("Vous devez accepter les conditions générales de vente.")
+        // Création de l'object contact contenant les informations client
+        let contact = {
+          firstName : form.fname.value,
+          lastName : form.lname.value,    
+          address : form.address.value,
+          city : form.city.value,
+          email : form.email.value
+        };
+
+        let products = []
+
+        //  Récupération des Ids des produits commandés
+        for (let productId of productAlreadyInCart) {
+          products.push(productId.id);
+        }
+
+      let toSend = {contact, products};
+
+      fetch(cameraAPI + "order", {
+          method : "POST",
+          body : JSON.stringify(toSend),
+          headers: {
+            "Content-type": "application/json; charset=UTF-8"
+          }
+        })
+        .then(function(response){
+          return response.json();
+        })
+        .then(function(data){
+
+            // Récupération de l'ID de la commande
+            localStorage.setItem("orderID", data.orderId);
+
+            // Envoi des informations clients au localStorage
+            localStorage.setItem("client", JSON.stringify(contact));
+
+            // Récupérarion du prix total pour le localStorage
+            let priceToPay = document.getElementById("cart_total_price").innerText;
+            localStorage.setItem("cartPrice", priceToPay);
+
+            // Suppresion des produits dans le localStorage
+            localStorage.removeItem("products");
+            
+            // Envoi à la page de fin de commande
+            document.location.href = "order.html"
+        });
+      
+     
+
+
     }
 });
+
+
 
 
 

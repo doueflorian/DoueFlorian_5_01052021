@@ -23,7 +23,6 @@ const id = getUrlID.get('id');
 let productAlreadyInCart = [];
 productAlreadyInCart = JSON.parse(localStorage.getItem('products'));
 
-
 // Afficher icone de panier "checked" ainsi que le nombre de produits
 function displayCart(){
     if(productAlreadyInCart) {
